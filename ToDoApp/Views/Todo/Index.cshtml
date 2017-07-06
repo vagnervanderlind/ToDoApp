@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ToDoApp.Models.Todo>
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<br />
+@Html.ActionLink("Incluir", "Create", new { area = "" }, new { @class = "btn btn-primary" })
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.DataCriacao)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.DataConclusao)
+        </th>
+        <th class="text-center">
+            Ações
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConclusao)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+</table>
